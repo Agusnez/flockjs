@@ -28,3 +28,4 @@ jobs:
         heroku_email: ${{ secrets.email }}
         # The appname to use for deploying/updating
         heroku_app_name: ${{ secrets.name }}
+        branch: master 
