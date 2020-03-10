@@ -1,25 +1,25 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Heroku CD
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.0.0
-      with:
+     - name: Deploy to Heroku
+     - uses: actions/checkout@v2
+     - uses: AkhileshNS/heroku-deploy@v3.0.0
+       with:
+        branch: "master"
         # This will be used for authentication. You can find it in your heroku homepage account settings
         heroku_api_key: ${{ secrets.api_key }}
         # Email that you use with heroku
         heroku_email: ${{ secrets.email }}
         # The appname to use for deploying/updating
         heroku_app_name: ${{ secrets.name }}
-        branch: "master" 
